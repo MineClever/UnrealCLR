@@ -1,19 +1,28 @@
-namespace UnrealEngine.Tests {
-	public class AudioPlayback : ISystem {
-		public void OnBeginPlay() {
-			Actor alarmSound = new("AlarmSound");
-			AudioComponent alarmAudioComponent = new(alarmSound);
-			SoundWave alarmSoundWave = SoundWave.Load("/Game/Tests/AlarmSound");
+namespace UnrealEngine.Tests;
+public class AudioPlayback : ISystem
+{
+    public void OnBeginPlay()
+    {
+        Actor alarmSound = new("AlarmSound");
+        AudioComponent alarmAudioComponent = new(alarmSound);
+        SoundWave? alarmSoundWave = SoundWave.Load("/Game/Tests/AlarmSound");
 
-			Debug.AddOnScreenMessage(-1, 5.0f, Color.PowderBlue, "Sound wave duration: " + alarmSoundWave.Duration + " seconds");
+        Assert.IsTrue(alarmSoundWave is not null);
 
-			alarmSoundWave.Loop = true;
-			alarmAudioComponent.SetSound(alarmSoundWave);
-			alarmAudioComponent.Play();
+        if (alarmSoundWave is not null)
+        {
+            Debug.AddOnScreenMessage(-1, 5.0f, Color.PowderBlue, "Sound wave duration: " + alarmSoundWave.Duration + " seconds");
 
-			Assert.IsTrue(alarmAudioComponent.IsPlaying);
-		}
+            alarmSoundWave.Loop = true;
+            alarmAudioComponent.SetSound(alarmSoundWave);
+            alarmAudioComponent.Play();
 
-		public void OnEndPlay() => Debug.ClearOnScreenMessages();
-	}
+            Assert.IsTrue(alarmAudioComponent.IsPlaying);
+        }
+    }
+
+    public void OnEndPlay()
+    {
+        Debug.ClearOnScreenMessages();
+    }
 }

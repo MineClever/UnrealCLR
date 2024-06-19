@@ -1,5 +1,5 @@
 /*
- *  Unreal Engine .NET 6 integration
+ *  Unreal Engine .NET 8 integration
  *  Copyright (c) 2021 Stanislav Denisov
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,7 +28,7 @@
 DEFINE_LOG_CATEGORY(LogUnrealCLR);
 
 void UnrealCLR::Module::StartupModule() {
-	#define HOSTFXR_VERSION "6.0.1"
+	#define HOSTFXR_VERSION "8.0.0"
 	#define HOSTFXR_WINDOWS "hostfxr.dll"
 	#define HOSTFXR_MAC "libhostfxr.dylib"
 	#define HOSTFXR_LINUX "libhostfxr.so"
@@ -290,20 +290,6 @@ void UnrealCLR::Module::StartupModule() {
 				Shared::EngineFunctions[head++] = (void*)&UnrealCLRFramework::Engine::AddAxisMapping;
 				Shared::EngineFunctions[head++] = (void*)&UnrealCLRFramework::Engine::ForceGarbageCollection;
 				Shared::EngineFunctions[head++] = (void*)&UnrealCLRFramework::Engine::DelayGarbageCollection;
-
-				checksum += head;
-			}
-
-			{
-				int32 head = 0;
-				Shared::Functions[position++] = Shared::HeadMountedDisplayFunctions;
-
-				Shared::HeadMountedDisplayFunctions[head++] = (void*)&UnrealCLRFramework::HeadMountedDisplay::IsConnected;
-				Shared::HeadMountedDisplayFunctions[head++] = (void*)&UnrealCLRFramework::HeadMountedDisplay::GetEnabled;
-				Shared::HeadMountedDisplayFunctions[head++] = (void*)&UnrealCLRFramework::HeadMountedDisplay::GetLowPersistenceMode;
-				Shared::HeadMountedDisplayFunctions[head++] = (void*)&UnrealCLRFramework::HeadMountedDisplay::GetDeviceName;
-				Shared::HeadMountedDisplayFunctions[head++] = (void*)&UnrealCLRFramework::HeadMountedDisplay::SetEnable;
-				Shared::HeadMountedDisplayFunctions[head++] = (void*)&UnrealCLRFramework::HeadMountedDisplay::SetLowPersistenceMode;
 
 				checksum += head;
 			}

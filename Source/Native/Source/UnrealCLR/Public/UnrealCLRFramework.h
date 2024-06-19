@@ -1,5 +1,5 @@
 /*
- *  Unreal Engine .NET 6 integration
+ *  Unreal Engine .NET 8 integration
  *  Copyright (c) 2021 Stanislav Denisov
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -42,12 +42,12 @@ namespace UnrealCLRFramework {
 	using CollisionChannel = ECollisionChannel;
 	using CollisionResponse = ECollisionResponse;
 	using ControllerHand = EControllerHand;
-	using HorizontalTextAligment = EHorizTextAligment;
+	using HorizontalTextAlignment = EHorizTextAligment;
 	using InputEvent = EInputEvent;
 	using NetMode = ENetMode;
 	using PixelFormat = EPixelFormat;
 	using TeleportType = ETeleportType;
-	using VerticalTextAligment = EVerticalTextAligment;
+	using VerticalTextAlignment = EVerticalTextAligment;
 	using PlaneConstraintAxis = EPlaneConstraintAxisSetting;
 
 	using Bounds = FBoxSphereBounds;
@@ -418,15 +418,6 @@ namespace UnrealCLRFramework {
 		static void AddAxisMapping(const char* AxisName, const char* Key, float Scale);
 		static void ForceGarbageCollection(bool FullPurge);
 		static void DelayGarbageCollection();
-	}
-
-	namespace HeadMountedDisplay {
-		static bool IsConnected();
-		static bool GetEnabled();
-		static bool GetLowPersistenceMode();
-		static void GetDeviceName(char* Name);
-		static void SetEnable(bool Value);
-		static void SetLowPersistenceMode(bool Value);
 	}
 
 	namespace World {
@@ -1076,9 +1067,9 @@ namespace UnrealCLRFramework {
 		static void SetText(UTextRenderComponent* TextRenderComponent, const char* Value);
 		static void SetTextMaterial(UTextRenderComponent* TextRenderComponent, UMaterialInterface* Material);
 		static void SetTextRenderColor(UTextRenderComponent* TextRenderComponent, Color Value);
-		static void SetHorizontalAlignment(UTextRenderComponent* TextRenderComponent, HorizontalTextAligment Value);
+		static void SetHorizontalAlignment(UTextRenderComponent* TextRenderComponent, HorizontalTextAlignment Value);
 		static void SetHorizontalSpacingAdjustment(UTextRenderComponent* TextRenderComponent, float Value);
-		static void SetVerticalAlignment(UTextRenderComponent* TextRenderComponent, VerticalTextAligment Value);
+		static void SetVerticalAlignment(UTextRenderComponent* TextRenderComponent, VerticalTextAlignment Value);
 		static void SetVerticalSpacingAdjustment(UTextRenderComponent* TextRenderComponent, float Value);
 		static void SetScale(UTextRenderComponent* TextRenderComponent, const Vector2* Value);
 		static void SetWorldSize(UTextRenderComponent* TextRenderComponent, float Value);

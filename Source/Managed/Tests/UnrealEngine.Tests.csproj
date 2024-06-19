@@ -1,12 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>net6.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <Platforms>x64</Platforms>
     <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>False</AppendRuntimeIdentifierToOutputPath>
     <DefineConstants>$(DefineConstants);ASSERTIONS</DefineConstants>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <OutDir>$(SolutionDir)/Managed/Tests</OutDir>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -20,9 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="UnrealEngine.Framework">
-      <HintPath>../Framework/bin/Release/UnrealEngine.Framework.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Framework\UnrealEngine.Framework.csproj" />
   </ItemGroup>
 
 </Project>
